@@ -3,6 +3,7 @@ package logger
 import (
 	"fmt"
 	"io"
+	"os"
 	"sync"
 	"unicode/utf8"
 
@@ -35,16 +36,28 @@ func NewLogOutputSubject() *logOutputSubject {
 
 // Output triggers calls to all containing formatters and writers in order to output provided log line
 func (los *logOutputSubject) Output(line *LogLine) {
+	// FINDING-1: copy slices under the lock then release before any Write()
+	// call. Holding RLock across Write() caused deadlock: rotation calls
+	// AddLogObserver/RemoveLogObserver which need Lock(), and Go's RWMutex
+	// blocks new RLock attempts once a pending Lock() is waiting, stalling
+	// every logging goroutine in the process.
 	los.mutObservers.RLock()
+	writers := make([]io.Writer, len(los.writers))
+	formatters := make([]Formatter, len(los.formatters))
+	copy(writers, los.writers)
+	copy(formatters, los.formatters)
+	los.mutObservers.RUnlock()
 
 	convertedLine := los.convertLogLine(line)
-	for i := 0; i < len(los.writers); i++ {
-		format := los.formatters[i]
-		buff := format.Output(convertedLine)
-		_, _ = los.writers[i].Write(buff)
+	for i := 0; i < len(writers); i++ {
+		buff := formatters[i].Output(convertedLine)
+		_, writeErr := writers[i].Write(buff)
+		if writeErr != nil {
+			_, _ = fmt.Fprintf(os.Stderr,
+				"logOutputSubject: observer #%d write failed: %v\n",
+				i, writeErr)
+		}
 	}
-
-	los.mutObservers.RUnlock()
 }
 
 func (los *logOutputSubject) convertLogLine(logLine *LogLine) LogLineHandler {

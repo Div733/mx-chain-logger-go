@@ -1,0 +1,764 @@
+{
+  "rootFolder": "/home/divesh/Desktop/bugfixes/div7321/mx-chain-logger-go",
+  "analyzedAt": "2026-05-15T05:00:09.672Z",
+  "rootStructure": [
+    {
+      "name": ".github",
+      "type": "dir"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "size": 268,
+      "lines": 25
+    },
+    {
+      "name": "LICENSE",
+      "type": "file",
+      "size": 35149,
+      "lines": 675
+    },
+    {
+      "name": "Makefile",
+      "type": "file",
+      "size": 122,
+      "lines": 11
+    },
+    {
+      "name": "README.md",
+      "type": "file",
+      "size": 701,
+      "lines": 30
+    },
+    {
+      "name": "commonConverters.go",
+      "type": "file",
+      "size": 2062,
+      "lines": 82
+    },
+    {
+      "name": "commonConverters_test.go",
+      "type": "file",
+      "size": 1189,
+      "lines": 58
+    },
+    {
+      "name": "consoleFormatter.go",
+      "type": "file",
+      "size": 2261,
+      "lines": 88
+    },
+    {
+      "name": "constants.go",
+      "type": "file",
+      "size": 130,
+      "lines": 5
+    },
+    {
+      "name": "correlation.go",
+      "type": "file",
+      "size": 2010,
+      "lines": 78
+    },
+    {
+      "name": "correlation_test.go",
+      "type": "file",
+      "size": 725,
+      "lines": 36
+    },
+    {
+      "name": "errors.go",
+      "type": "file",
+      "size": 938,
+      "lines": 22
+    },
+    {
+      "name": "examples_test.go",
+      "type": "file",
+      "size": 1465,
+      "lines": 48
+    },
+    {
+      "name": "export_test.go",
+      "type": "file",
+      "size": 537,
+      "lines": 29
+    },
+    {
+      "name": "file",
+      "type": "dir"
+    },
+    {
+      "name": "go.mod",
+      "type": "file",
+      "size": 779,
+      "lines": 25
+    },
+    {
+      "name": "go.sum",
+      "type": "file",
+      "size": 6655,
+      "lines": 72
+    },
+    {
+      "name": "interface.go",
+      "type": "file",
+      "size": 1718,
+      "lines": 62
+    },
+    {
+      "name": "logLevels.go",
+      "type": "file",
+      "size": 1392,
+      "lines": 62
+    },
+    {
+      "name": "logLine.go",
+      "type": "file",
+      "size": 1098,
+      "lines": 41
+    },
+    {
+      "name": "logLineWrapperFormatter.go",
+      "type": "file",
+      "size": 1268,
+      "lines": 48
+    },
+    {
+      "name": "logLineWrapperFormatter_test.go",
+      "type": "file",
+      "size": 1661,
+      "lines": 71
+    },
+    {
+      "name": "logLine_test.go",
+      "type": "file",
+      "size": 1086,
+      "lines": 42
+    },
+    {
+      "name": "logOutputSubject.go",
+      "type": "file",
+      "size": 4539,
+      "lines": 174
+    },
+    {
+      "name": "logOutputSubject_test.go",
+      "type": "file",
+      "size": 9085,
+      "lines": 356
+    },
+    {
+      "name": "logSubsystem.go",
+      "type": "file",
+      "size": 6762,
+      "lines": 220
+    },
+    {
+      "name": "logSubsystem_test.go",
+      "type": "file",
+      "size": 2794,
+      "lines": 103
+    },
+    {
+      "name": "logger.go",
+      "type": "file",
+      "size": 3075,
+      "lines": 116
+    },
+    {
+      "name": "logger_test.go",
+      "type": "file",
+      "size": 7530,
+      "lines": 325
+    },
+    {
+      "name": "mock",
+      "type": "dir"
+    },
+    {
+      "name": "mycont",
+      "type": "dir"
+    },
+    {
+      "name": "overview.json",
+      "type": "file",
+      "size": 16770,
+      "lines": 722
+    },
+    {
+      "name": "overview_architecture.puml",
+      "type": "file",
+      "size": 246,
+      "lines": 7
+    },
+    {
+      "name": "plainFormatter.go",
+      "type": "file",
+      "size": 1650,
+      "lines": 60
+    },
+    {
+      "name": "profile.go",
+      "type": "file",
+      "size": 1322,
+      "lines": 64
+    },
+    {
+      "name": "profileChange.go",
+      "type": "file",
+      "size": 1649,
+      "lines": 66
+    },
+    {
+      "name": "profile_test.go",
+      "type": "file",
+      "size": 1116,
+      "lines": 51
+    },
+    {
+      "name": "proto",
+      "type": "dir"
+    },
+    {
+      "name": "redirects",
+      "type": "dir"
+    }
+  ],
+  "rootFileSnippets": {
+    "LICENSE": [
+      "GNU GENERAL PUBLIC LICENSE",
+      "Version 3, 29 June 2007",
+      "",
+      "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+      "Everyone is permitted to copy and distribute verbatim copies",
+      "of this license document, but changing it is not allowed.",
+      "",
+      "Preamble",
+      "",
+      "The GNU General Public License is a free, copyleft license for"
+    ],
+    "Makefile": [
+      ".PHONY: test clean",
+      "",
+      "clean:",
+      "go clean -cache -testcache",
+      "",
+      "build:",
+      "go build ./...",
+      "",
+      "test: clean",
+      "go test -race -count=1 ./..."
+    ],
+    "README.md": [
+      "# mx-chain-logger-go",
+      "",
+      "Multiversx' logger subsystem written in go",
+      "",
+      "## CLI options",
+      "",
+      "### Logs producer (Multiversx Node)",
+      "",
+      "- `log-level`: comma-separated pairs of (`loggerName`, `logLevel`)",
+      "- `log-correlation`: option to include correlation elements in the logs"
+    ],
+    "commonConverters.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"encoding/hex\"",
+      "\"fmt\"",
+      "\"strings\"",
+      "\"time\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go/proto\"",
+      ")"
+    ],
+    "commonConverters_test.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"encoding/hex\"",
+      "\"strings\"",
+      "\"testing\"",
+      "",
+      "\"github.com/stretchr/testify/assert\"",
+      ")",
+      ""
+    ],
+    "consoleFormatter.go": [
+      "package logger",
+      "",
+      "import \"fmt\"",
+      "",
+      "const (",
+      "ansiRegularGray      = \"0;37m\"",
+      "ansiRegularLightBlue = \"0;36m\"",
+      "ansiRegularGreen     = \"0;32m\"",
+      "ansiRegularYellow    = \"0;33m\"",
+      "ansiRegularRed       = \"0;31m\""
+    ],
+    "constants.go": [
+      "package logger",
+      "",
+      "const formatColoredString = \"\\033[%s%s\\033[0m[%s] %s %s %s %s\\n\"",
+      "const formatPlainString = \"%s[%s] %s %s %s %s\\n\"",
+      ""
+    ],
+    "correlation.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"sync\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go/proto\"",
+      ")",
+      "",
+      "var globalCorrelation logCorrelation",
+      ""
+    ],
+    "correlation_test.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"testing\"",
+      "",
+      "\"github.com/stretchr/testify/require\"",
+      ")",
+      "",
+      "func TestCorrelation_Toggle(t *testing.T) {",
+      "ToggleCorrelation(true)"
+    ],
+    "errors.go": [
+      "package logger",
+      "",
+      "import \"errors\"",
+      "",
+      "// ErrNilWriter signals that a nil writer has been provided",
+      "var ErrNilWriter = errors.New(\"nil writer provided\")",
+      "",
+      "// ErrNilFormatter signals that a nil formatter has been provided",
+      "var ErrNilFormatter = errors.New(\"nil formatter provided\")",
+      ""
+    ],
+    "examples_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"crypto/rand\"",
+      "\"testing\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go\"",
+      ")",
+      "",
+      "func TestLogger_ExampleCreateLoggerAndOutputSimpleMessages(t *testing.T) {"
+    ],
+    "export_test.go": [
+      "package logger",
+      "",
+      "import \"io\"",
+      "",
+      "var DefaultLogLevel = &defaultLogLevel",
+      "",
+      "// Observers -",
+      "func (los *logOutputSubject) Observers() ([]io.Writer, []Formatter) {",
+      "los.mutObservers.RLock()",
+      "defer los.mutObservers.RUnlock()"
+    ],
+    "go.mod": [
+      "module github.com/multiversx/mx-chain-logger-go",
+      "",
+      "go 1.23",
+      "",
+      "require (",
+      "github.com/gogo/protobuf v1.3.2",
+      "github.com/multiversx/mx-chain-core-go v1.4.0",
+      "github.com/stretchr/testify v1.10.0",
+      ")",
+      ""
+    ],
+    "go.sum": [
+      "github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=",
+      "github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=",
+      "github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=",
+      "github.com/denisbrodbeck/machineid v1.0.1 h1:geKr9qtkB876mXguW2X6TU4ZynleN6ezuMSRhl4D7AQ=",
+      "github.com/denisbrodbeck/machineid v1.0.1/go.mod h1:dJUwb7PTidGDeYyUBmXZ2GphQBbjJCrnectwCyxcUSI=",
+      "github.com/gogo/protobuf v1.3.2 h1:Ov1cvc58UF3b5XjBnZv7+opcTcQFZebYjWzi34vdm4Q=",
+      "github.com/gogo/protobuf v1.3.2/go.mod h1:P1XiOD3dCwIKUDQYPy72D8LYyHL2YPYrpS2s69NZV8Q=",
+      "github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=",
+      "github.com/golang/protobuf v1.5.3 h1:KhyjKVUg7Usr/dYsdSqoFveMYd5ko72D+zANwlG1mmg=",
+      "github.com/golang/protobuf v1.5.3/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY="
+    ],
+    "interface.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"io\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go/proto\"",
+      ")",
+      "",
+      "// Logger defines the behavior of a data logger component",
+      "type Logger interface {"
+    ],
+    "logLevels.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"fmt\"",
+      "\"strings\"",
+      ")",
+      "",
+      "// LogLevel defines the priority level of a log line. Trace is the lowest priority level, Error is the highest",
+      "type LogLevel byte",
+      ""
+    ],
+    "logLine.go": [
+      "//go:generate protoc -I=proto -I=$GOPATH/src -I=$GOPATH/src/github.com/gogo/protobuf/protobuf  --gogoslick_out=proto logLineMessage.proto",
+      "package logger",
+      "",
+      "import (",
+      "\"time\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go/proto\"",
+      ")",
+      "",
+      "// LogLine is the structure used to hold a log line"
+    ],
+    "logLineWrapperFormatter.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"fmt\"",
+      "\"os\"",
+      "",
+      "\"github.com/multiversx/mx-chain-core-go/core/check\"",
+      ")",
+      "",
+      "// logLineWrapperFormatter converts the LogLineHandler into its marshalized form"
+    ],
+    "logLineWrapperFormatter_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"errors\"",
+      "\"testing\"",
+      "",
+      "\"github.com/multiversx/mx-chain-core-go/core/check\"",
+      "logger \"github.com/multiversx/mx-chain-logger-go\"",
+      "\"github.com/multiversx/mx-chain-logger-go/mock\"",
+      "\"github.com/stretchr/testify/assert\""
+    ],
+    "logLine_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"fmt\"",
+      "\"testing\"",
+      "",
+      "\"github.com/multiversx/mx-chain-core-go/marshal\"",
+      "logger \"github.com/multiversx/mx-chain-logger-go\"",
+      "\"github.com/multiversx/mx-chain-logger-go/proto\"",
+      "\"github.com/stretchr/testify/assert\""
+    ],
+    "logOutputSubject.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"fmt\"",
+      "\"io\"",
+      "\"os\"",
+      "\"sync\"",
+      "\"unicode/utf8\"",
+      "",
+      "\"github.com/multiversx/mx-chain-core-go/core/check\""
+    ],
+    "logOutputSubject_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"bytes\"",
+      "\"errors\"",
+      "\"sync\"",
+      "\"sync/atomic\"",
+      "\"testing\"",
+      "\"time\"",
+      ""
+    ],
+    "logSubsystem.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"io\"",
+      "\"os\"",
+      "\"strings\"",
+      "\"sync\"",
+      ")",
+      "",
+      "var logMut = &sync.RWMutex{}"
+    ],
+    "logSubsystem_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"testing\"",
+      "",
+      "\"github.com/multiversx/mx-chain-logger-go\"",
+      "\"github.com/stretchr/testify/assert\"",
+      ")",
+      "",
+      "func TestSetLogLevel_WrongStringParameterShouldErr(t *testing.T) {"
+    ],
+    "logger.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"sync\"",
+      ")",
+      "",
+      "var _ Logger = (*logger)(nil)",
+      "",
+      "// logger is the primary structure used to interact with the productive code",
+      "type logger struct {"
+    ],
+    "logger_test.go": [
+      "package logger_test",
+      "",
+      "import (",
+      "\"sync/atomic\"",
+      "\"testing\"",
+      "",
+      "\"github.com/multiversx/mx-chain-core-go/core/check\"",
+      "logger \"github.com/multiversx/mx-chain-logger-go\"",
+      "\"github.com/multiversx/mx-chain-logger-go/mock\"",
+      "\"github.com/stretchr/testify/assert\""
+    ],
+    "overview.json": [
+      "{",
+      "\"rootFolder\": \"/home/divesh/Desktop/bugfixes/mx-chain-logger-go-NewArc\",",
+      "\"analyzedAt\": \"2026-05-15T04:58:50.649Z\",",
+      "\"rootStructure\": [",
+      "{",
+      "\"name\": \".github\",",
+      "\"type\": \"dir\"",
+      "},",
+      "{",
+      "\"name\": \".gitignore\","
+    ],
+    "overview_architecture.puml": [
+      "@startuml",
+      "' Generated by SASVA Maria on 2026-05-15T04:58:50.680Z",
+      "' ERROR: Diagram generation failed",
+      "",
+      "note \"Architecture Diagram Generation Failed\\n\\nError: No chat model configured\\n\\nPlease check the logs for more details.\" as ErrorNote",
+      "",
+      "@enduml"
+    ],
+    "plainFormatter.go": [
+      "package logger",
+      "",
+      "import \"fmt\"",
+      "",
+      "// PlainFormatter implements formatter interface and is used to format log lines to be written in the same form",
+      "// as ConsoleFormatter but it doesn't use the ANSI colors (useful when writing to a file, for example)",
+      "type PlainFormatter struct {",
+      "}",
+      "",
+      "// Output converts the provided LogLineHandler into a slice of bytes ready for output"
+    ],
+    "profile.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"encoding/json\"",
+      "\"fmt\"",
+      ")",
+      "",
+      "// Profile holds global logger options",
+      "type Profile struct {",
+      "LogLevelPatterns string"
+    ],
+    "profileChange.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"sync\"",
+      ")",
+      "",
+      "var globalProfileChangeSubject *profileChangeSubject",
+      "",
+      "func init() {",
+      "globalProfileChangeSubject = NewProfileChangeSubject()"
+    ],
+    "profile_test.go": [
+      "package logger",
+      "",
+      "import (",
+      "\"testing\"",
+      "",
+      "\"github.com/stretchr/testify/require\"",
+      ")",
+      "",
+      "func TestProfile_GetCurrentProfile(t *testing.T) {",
+      "_ = SetLogLevel(\"foobar:TRACE\")"
+    ]
+  },
+  "importantFolders": [],
+  "readmeParagraphs": {
+    "root": "# mx-chain-logger-go"
+  },
+  "totals": {
+    "numFiles": 53,
+    "numDirs": 10,
+    "totalSizeBytes": 181312,
+    "totalLinesOfCode": 4346
+  },
+  "fileCategories": {
+    "config": 4,
+    "other": 4,
+    "build": 3,
+    "documentation": 2,
+    "source": 40
+  },
+  "linesOfCodePerLanguage": {
+    "Go": 4346
+  },
+  "filesPerLanguage": {
+    "Go": 40
+  },
+  "projectTypes": [
+    "Go (Modules)"
+  ],
+  "frameworks": [],
+  "entryPoints": [],
+  "ciCdTools": [
+    "GitHub Actions"
+  ],
+  "packageManagers": [
+    "go mod"
+  ],
+  "topLevelDirectories": [
+    {
+      "name": "proto",
+      "numFiles": 2,
+      "totalLoc": 995,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "file",
+      "numFiles": 5,
+      "totalLoc": 658,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "mock",
+      "numFiles": 6,
+      "totalLoc": 303,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "redirects",
+      "numFiles": 3,
+      "totalLoc": 83,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "mycont",
+      "numFiles": 1,
+      "totalLoc": 0
+    }
+  ],
+  "detailedDirectories": [
+    {
+      "path": "proto",
+      "name": "proto",
+      "level": 1,
+      "numFiles": 2,
+      "totalLoc": 995,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 2 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "file",
+      "name": "file",
+      "level": 1,
+      "numFiles": 5,
+      "totalLoc": 658,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 5 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "mock",
+      "name": "mock",
+      "level": 1,
+      "numFiles": 6,
+      "totalLoc": 303,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 6 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "redirects",
+      "name": "redirects",
+      "level": 1,
+      "numFiles": 3,
+      "totalLoc": 83,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 3 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "mycont",
+      "name": "mycont",
+      "level": 1,
+      "numFiles": 1,
+      "totalLoc": 0,
+      "category": "General",
+      "description": "General module with 1 files",
+      "subdirectories": []
+    }
+  ],
+  "architecturalInsights": {
+    "coreApplications": [],
+    "entryPointDetails": [],
+    "serviceArchitecture": {
+      "microservices": [],
+      "monoliths": [],
+      "libraries": []
+    },
+    "layeredArchitecture": {
+      "presentation": [],
+      "business": [],
+      "data": [],
+      "infrastructure": []
+    }
+  },
+  "largeFiles": [],
+  "dependencies": {
+    "production": [],
+    "development": [],
+    "total": 0
+  },
+  "complexity": {
+    "averageFileSize": 82,
+    "maxFileSize": 0,
+    "nestedDepth": 0,
+    "estimatedComplexity": "low"
+  },
+  "gitRepo": {
+    "firstCommitDate": "2025-07-17",
+    "totalCommits": 134,
+    "numContributors": 0,
+    "currentBranch": "master",
+    "remoteUrls": [
+      "https://github.com/Div733/mx-chain-logger-go.git"
+    ]
+  },
+  "license": "MIT"
+}

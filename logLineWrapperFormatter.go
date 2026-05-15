@@ -1,6 +1,9 @@
 package logger
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/multiversx/mx-chain-core-go/core/check"
 )
 
@@ -26,12 +29,16 @@ func (llwf *logLineWrapperFormatter) Output(line LogLineHandler) []byte {
 		return nil
 	}
 
+	// FINDING-3: surface marshal failures so remote consumers are not
+	// silently starved of log lines with no diagnostic on either side.
 	buff, err := llwf.marshalizer.Marshal(line)
-	if err == nil {
-		return buff
+	if err != nil {
+		_, _ = fmt.Fprintf(os.Stderr,
+			"logLineWrapperFormatter: marshal failed: %v\n", err)
+		return nil
 	}
 
-	return nil
+	return buff
 }
 
 // IsInterfaceNil returns true if there is no value under the interface

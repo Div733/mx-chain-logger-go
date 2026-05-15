@@ -32,7 +32,13 @@ func newLifeSpanner(notifyChan chan struct{}, checkHandler func() bool, initialD
 }
 
 func (spanner *lifeSpanner) reset() {
-	spanner.resetChan <- struct{}{}
+	// FINDING-2: bare send on unbuffered channel blocks forever if process()
+	// has already exited (ctx cancelled). Use select/default so reset() is
+	// always non-blocking when there is no receiver.
+	select {
+	case spanner.resetChan <- struct{}{}:
+	default:
+	}
 }
 
 func (spanner *lifeSpanner) resetDuration(newDuration time.Duration) {
